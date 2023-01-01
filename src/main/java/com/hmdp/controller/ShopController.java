@@ -16,7 +16,7 @@ import javax.annotation.Resource;
  * 前端控制器
  * </p>
  *
- * @author 虎哥
+ * @author 虎哥               具体店铺 茶客厅 海底捞
  * @since 2021-12-22
  */
 @RestController
@@ -33,7 +33,9 @@ public class ShopController {
      */
     @GetMapping("/{id}")
     public Result queryShopById(@PathVariable("id") Long id) {
-        return Result.ok(shopService.getById(id));
+        //return Result.ok(shopService.getById(id));
+        //为 shop/{id} 接口添加缓存
+        return shopService.queryById(id);
     }
 
     /**
@@ -56,9 +58,11 @@ public class ShopController {
      */
     @PutMapping
     public Result updateShop(@RequestBody Shop shop) {
-        // 写入数据库
-        shopService.updateById(shop);
-        return Result.ok();
+        // 写入数据库  肢解更新数据库
+        //shopService.updateById(shop);
+
+        //修改数据库+删除缓存
+        return shopService.modifyShop(shop);
     }
 
     /**
@@ -86,6 +90,7 @@ public class ShopController {
      * @param current 页码
      * @return 商铺列表
      */
+
     @GetMapping("/of/name")
     public Result queryShopByName(
             @RequestParam(value = "name", required = false) String name,
@@ -98,4 +103,5 @@ public class ShopController {
         // 返回数据
         return Result.ok(page.getRecords());
     }
+
 }

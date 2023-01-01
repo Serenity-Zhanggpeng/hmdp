@@ -50,6 +50,9 @@ public class ShopType implements Serializable {
 
     /**
      * 创建时间
+     * JsonIgnore拆成两个单词，就是Json和Ignore，Ignore的意思是忽略，所以可以简单的翻译一下就是生成json的时候忽略某个属性。
+     * 此注解是类的注解，作用是json序列化时将Java bean中的一些属性忽略掉，就是生成序列时不产生此属性
+     * 一般用于属性或者方法上，常用在属性上。
      */
     @JsonIgnore
     private LocalDateTime createTime;
