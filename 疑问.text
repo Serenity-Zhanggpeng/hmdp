@@ -1,0 +1,12 @@
+1:CacheClient类中中
+//// 4. 若 Redis 中不存在（未命中），则根据 id 从数据库中查询；    R就是到时候传参的Shop类
+R r = dbFallback.apply(id);   //这里这么久根据id查数据库了呢？？？？？？？this.getById()??执行了？？？？？
+
+知道了:在调用的时候给定了函数体里面的类容
+ Shop shop = cacheClient.dealWithCachePenetration(CACHE_SHOP_KEY, id,
+ Shop.class, id2->getById{id2}或者this::getById, TTL_THIRTY, TimeUnit.MINUTES);
+
+ 2:6.1 全局唯一 ID 的单元测试代码不太懂 涉及到JUC相关的知识把
+
+
+ 优惠卷秒杀一人一单的问题讲的非常的好  VoucherOrderServiceimpl中  知识点 spring框架事务失效 aop代理对象 synchronized锁对象

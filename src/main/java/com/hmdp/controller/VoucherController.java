@@ -28,6 +28,7 @@ public class VoucherController {
      * @param voucher 优惠券信息
      * @return 优惠券id
      */
+
     @PostMapping
     public Result addVoucher(@RequestBody Voucher voucher) {
         voucherService.save(voucher);
@@ -36,7 +37,7 @@ public class VoucherController {
 
     /**
      * 新增秒杀券
-     * @param voucher 优惠券信息，包含秒杀信息
+     * @param voucher 优惠券信息，包含秒杀信息      RequestBody作用会将客户端的json自动反序列化为Java对象
      * @return 优惠券id
      */
     @PostMapping("seckill")
@@ -54,4 +55,5 @@ public class VoucherController {
     public Result queryVoucherOfShop(@PathVariable("shopId") Long shopId) {
        return voucherService.queryVoucherOfShop(shopId);
     }
+
 }
